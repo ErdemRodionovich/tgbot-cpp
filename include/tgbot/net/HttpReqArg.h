@@ -9,49 +9,49 @@
 #include <vector>
 #include <functional>
 
-namespace TgBot {
+namespace TgBot
+{
 
-/**
- * @brief This class represents argument in POST http requests.
- *
- * @ingroup net
- */
-class TGBOT_API HttpReqArg {
-
-public:
-    template<typename T>
-    HttpReqArg(std::string name, const T& value, bool isFile = false, std::string mimeType = "text/plain", std::string fileName = "") :
-            name(std::move(name)), value(boost::lexical_cast<std::string>(value)), isFile(isFile), mimeType(std::move(mimeType)), fileName(std::move(fileName))
+    /**
+     * @brief This class represents argument in POST http requests.
+     *
+     * @ingroup net
+     */
+    class TGBOT_API HttpReqArg
     {
-    }
 
-    /**
-     * @brief Name of an argument.
-     */
-    std::string name;
+    public:
+        template <typename T>
+        HttpReqArg(std::string nameP, const T &valueP, bool isFileP = false, std::string mimeTypeParameter = "text/plain", std::string fileNameParameter = "") : name(std::move(nameP)), value(boost::lexical_cast<std::string>(valueP)), isFile(isFileP), mimeType(std::move(mimeTypeParameter)), fileName(std::move(fileNameParameter))
+        {
+        }
 
-    /**
-     * @brief Value of an argument.
-     */
-    std::string value;
+        /**
+         * @brief Name of an argument.
+         */
+        std::string name;
 
-    /**
-     * @brief Should be true if an argument value hold some file contents
-     */
-    bool isFile = false;
+        /**
+         * @brief Value of an argument.
+         */
+        std::string value;
 
-    /**
-     * @brief Mime type of an argument value. This field makes sense only if isFile is true.
-     */
-    std::string mimeType = "text/plain";
+        /**
+         * @brief Should be true if an argument value hold some file contents
+         */
+        bool isFile = false;
 
-    /**
-     * @brief Should be set if an argument value hold some file contents
-     */
-    std::string fileName;
-};
+        /**
+         * @brief Mime type of an argument value. This field makes sense only if isFile is true.
+         */
+        std::string mimeType = "text/plain";
+
+        /**
+         * @brief Should be set if an argument value hold some file contents
+         */
+        std::string fileName;
+    };
 
 }
 
-
-#endif //TGBOT_HTTPPARAMETER_H
+#endif // TGBOT_HTTPPARAMETER_H
