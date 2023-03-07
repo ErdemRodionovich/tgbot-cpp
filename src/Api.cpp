@@ -2484,6 +2484,8 @@ Api::sendRequest(const std::string &method,
       needRepeat = false;
     } catch (const boost::wrapexcept<boost::system::system_error> &) {
       ++countOfAttempt;
+    } catch (const std::runtime_error &) {
+      ++countOfAttempt;
     }
   }
   if (!serverResponse.compare(0, 6, "<html>")) {
